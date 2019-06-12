@@ -1,5 +1,16 @@
 version: '3.4'
 services:
+  proxy:
+    container_name: diego-prod-nginx
+    build:
+      dockerfile: Dockerfile
+      target: diego
+      context: ./nginx
+    ports:
+      - "80:80"
+    links:
+      - diego
+    
   diego:
     build:
       context: .
