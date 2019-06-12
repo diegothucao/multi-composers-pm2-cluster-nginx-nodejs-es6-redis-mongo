@@ -8,11 +8,11 @@ COPY . .
 RUN yarn run build
 
 FROM base as diego-dev
-EXPOSE 8080
+EXPOSE 8080 80
 CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "development" ]
 RUN pm2 startup
 
 FROM base as diego
-EXPOSE 8081
+EXPOSE 8081 80
 CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]
 RUN pm2 startup
