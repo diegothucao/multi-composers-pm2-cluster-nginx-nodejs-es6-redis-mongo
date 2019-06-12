@@ -24,10 +24,8 @@ app.get('/', (_, res) => {
   res.send('Hello world\n')
 });
 
-let server = app.listen(process.env.PORT)
+let server = app.listen(process.env.PORT || 8080)
 server.setTimeout(500000)
-
-console.log(`Running on port ${process.env.PORT}`)
 ```
 
 Multi target 
@@ -62,12 +60,10 @@ module.exports = {
     instances: "max",
     env: {
       name : 'diego-dev',
-      PORT: 8080,
       NODE_ENV: 'development'
     },
     env_production : {
       name : 'diego-pro',
-      PORT: 8081,
       NODE_ENV: 'production'
     }
   }]
