@@ -6,6 +6,29 @@ Step to run
 2. Ro run Dev mod `docker-compose -f docker-compose.yml -f docker-compose.dev.yml --build`
 2. Ro run Pro mode `docker-compose -f docker-compose.yml -f docker-compose.prod.yml --build`
 
+create basic node 
+```javascript 
+import express from 'express'
+import cors from 'cors'
+import { urlencoded, json } from 'body-parser'
+import dotenv from 'dotenv'
+
+dotenv.load()
+const app = express()
+app.use(urlencoded({ extended: true, limit: '500mb'}))
+app.use(json({ extended: true, limit: '500mb'}))
+app.use(cors())
+
+app.get('/', (_, res) => {
+  res.send('Hello world\n')
+});
+
+let server = app.listen(process.env.PORT)
+server.setTimeout(500000)
+
+console.log(`Running on port ${process.env.PORT}`)
+```
+
 If you see any issue, please do not hesitate to create an issue here or can contact me via email cao.trung.thu@gmail.com or [Linkedin](https://www.linkedin.com/in/diegothucao/)
 
 Thanks
