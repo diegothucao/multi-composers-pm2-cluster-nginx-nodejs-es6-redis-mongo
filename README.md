@@ -3,8 +3,8 @@ This is an essential example to build docker with multi composers, pm2 and nodej
 
 Step to run
 1. Clone the [repo](https://github.com/diegothucao/multi-composers-nodejs)
-2. Ro run Dev mod `docker-compose -f docker-compose.yml -f docker-compose.dev.yml --build`
-2. Ro run Pro mode `docker-compose -f docker-compose.yml -f docker-compose.prod.yml --build`
+2. Ro run Dev mod `docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build`
+2. Ro run Pro mode `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build`
 
 create basic node 
 ```javascript 
