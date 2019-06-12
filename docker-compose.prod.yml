@@ -9,7 +9,7 @@ services:
     container_name: diego
     restart: always
     ports:
-      - "8081:80"
+      - "8081:8081"
     volumes:
       - .:/diego
     tty: true

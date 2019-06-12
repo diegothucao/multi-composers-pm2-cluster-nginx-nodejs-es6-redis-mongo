@@ -5,13 +5,13 @@ module.exports = {
     exec_mode: 'cluster',
     instances: "max",
     env: {
-      name : 'diego-dev',
       PORT: 8080,
+      name : 'diego-dev',
       NODE_ENV: 'development'
     },
     env_production : {
-      name : 'diego-pro',
       PORT: 8081,
+      name : 'diego-pro',
       NODE_ENV: 'production'
     }
   }]
