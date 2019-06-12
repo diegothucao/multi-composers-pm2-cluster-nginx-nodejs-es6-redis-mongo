@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+
+  diego:
+    build:
+      context: .
+      target: diego
+      dockerfile: ./Dockerfile
+    container_name: diego
+    restart: always
+    ports:
+      - "8081:80"
+    volumes:
+      - .:/diego
+    tty: true
+    environment:
+      PORT: 8081
