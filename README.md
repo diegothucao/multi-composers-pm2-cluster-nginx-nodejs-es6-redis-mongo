@@ -1,5 +1,5 @@
-# multi-composers-pm2-cluster-nginx-nodejs
-This is an essential example to build docker with multi composers, pm2, nodejs, nginx an cluster.
+# multi-composers-pm2-cluster-nginx-nodejs-es6
+This is an essential example to build docker with multi composers, pm2, nodejs/es6, nginx an cluster.
 
 Step to run
 1. Clone the [repo](https://github.com/diegothucao/multi-composers-nodejs)
