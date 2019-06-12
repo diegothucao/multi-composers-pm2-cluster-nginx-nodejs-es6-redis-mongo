@@ -5,7 +5,6 @@
   "main": "src/app.js",
   "author": "Diego CAO <cao.trung.thu@gmail.com>",
   "scripts": {
-    "lint": "eslint .",
     "test": "echo \"Error: no test  specified\" && exit 1",
     "start": "nodemon ./src/app.js --exec babel-node",
     "build": "babel src -d dist",
@@ -15,7 +14,7 @@
   "keywords": [
     "Diego"
   ],
-  "license": "ISC",
+  "license": "Diego",
   "dependencies": {
     "@types/dotenv": "^6.1.0",
     "cors": "2.8.5",
@@ -33,10 +32,6 @@
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-typescript": "^7.1.0",
     "@babel/runtime": "^7.2.0",
-    "babel-plugin-inline-import": "^2.0.4",
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-promise": "^3.6.0"
+    "babel-plugin-inline-import": "^2.0.4"
   }
 }
