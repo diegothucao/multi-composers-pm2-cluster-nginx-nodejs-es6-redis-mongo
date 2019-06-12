@@ -7,7 +7,7 @@ Step to run
 2. Run development mode `docker-compose -f docker-compose.dev.yml up --build` or Production mode `docker-compose -f docker-compose.prod.yml up --build`
 4. Open [localhost](http://localhost)
 
-create basic node 
+create basic `Nodejs` code  
 ```javascript 
 import express from 'express'
 import cors from 'cors'
