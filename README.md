@@ -1,4 +1,4 @@
-# Nginx, Docker/ multi-composers, PM2, Cluster, Nodejs and ES6
+# Nginx, Docker/multi-composers, Pm2, Cluster, Nodejs, Babel and ES6
 
 This is an essential example to build docker with multi composers, pm2, nodejs/es6, nginx an cluster.
 
