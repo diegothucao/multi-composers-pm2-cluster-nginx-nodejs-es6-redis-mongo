@@ -1,4 +1,4 @@
-# multi-composers-pm2-nodejs
+# multi-composers-pm2-cluster-nginx-nodejs
 This is an essential example to build docker with multi composers, pm2 and nodejs
 
 Step to run
