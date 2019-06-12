@@ -1,5 +1,5 @@
-# multi-composers-nodejs
-This is an essential example to build docker with multi composers and nodejs
+# multi-composers-pm2-nodejs
+This is an essential example to build docker with multi composers, pm2 and nodejs
 
 Step to run
 1. Clone the [repo](https://github.com/diegothucao/multi-composers-nodejs)
