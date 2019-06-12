@@ -1,6 +1,6 @@
 FROM node:10 as base
-RUN mkdir -p /usr/src/appny
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/diego
+WORKDIR /usr/diego
 COPY package*.json ./
 RUN npm install -g pm2 yarn
 RUN yarn install
