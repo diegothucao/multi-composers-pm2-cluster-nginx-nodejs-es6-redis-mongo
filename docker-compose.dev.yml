@@ -12,4 +12,6 @@ services:
     volumes:
       - .:/diego
     tty: true
+    environment:
+      PORT: 8080
      

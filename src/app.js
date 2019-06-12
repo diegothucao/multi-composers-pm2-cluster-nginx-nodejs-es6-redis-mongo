@@ -11,10 +11,8 @@ app.use(json({ extended: true, limit: '500mb'}))
 app.use(cors())
 
 app.get('/', (_, res) => {
-  res.send('Hello world\n')
+  res.send('Diego Cao: Hello')
 });
 
-let server = app.listen(process.env.PORT)
+let server = app.listen(process.env.PORT || 8080)
 server.setTimeout(500000)
-
-console.log(`Running on port ${process.env.PORT}`)
