@@ -52,7 +52,7 @@ CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]
 RUN pm2 startup
 ```
 PM2 configuration 
-```
+```javascript
 module.exports = {
   apps : [{
     name      : 'diego-service',
