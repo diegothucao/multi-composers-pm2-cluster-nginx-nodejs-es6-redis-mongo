@@ -51,6 +51,27 @@ EXPOSE 8081
 CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]
 RUN pm2 startup
 ```
+PM2 configuration 
+```
+module.exports = {
+  apps : [{
+    name      : 'diego-service',
+    script    : 'dist/app.js',
+    exec_mode: 'cluster',
+    instances: "max",
+    env: {
+      name : 'diego-dev',
+      PORT: 8080,
+      NODE_ENV: 'development'
+    },
+    env_production : {
+      name : 'diego-pro',
+      PORT: 8081,
+      NODE_ENV: 'production'
+    }
+  }]
+}
+```
 
 If you see any issue, please do not hesitate to create an issue here or can contact me via email cao.trung.thu@gmail.com or [Linkedin](https://www.linkedin.com/in/diegothucao/)
 
