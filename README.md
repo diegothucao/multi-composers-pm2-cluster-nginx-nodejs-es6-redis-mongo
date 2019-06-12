@@ -73,6 +73,50 @@ module.exports = {
 }
 ```
 
+# SOME DOCKER COMMANDS (in terminal and PowerShell)
+
+# Run containers by Docker
+docker-compose up
+
+# use -d flag to run in background
+docker-compose up -d
+
+# Run in Docker and rebuild
+docker-compose up --build
+
+# Stop docker running (if not -d flag used)
+^c
+
+# Tear down (stops running containers and removes networks)
+docker-compose down
+
+# To re-build
+docker-compose build
+
+# Check containers running
+docker ps
+
+# Forched remove of container
+$ docker container rm <container name> -f
+
+# Remove all containers by force
+$ docker rm $(docker ps -aq) -f
+
+# Removes all images by force
+$ docker image rm $(docker images -a -q) -f
+
+# show running containers running
+$ docker container ls
+
+# show running containers running or not
+$ docker container ls -a
+
+# show local docker images
+$ docker images
+
+# Stop container running
+$ docker container  stop <id>
+	
 If you see any issue, please do not hesitate to create an issue here or can contact me via email cao.trung.thu@gmail.com or [Linkedin](https://www.linkedin.com/in/diegothucao/)
 
 Thanks
