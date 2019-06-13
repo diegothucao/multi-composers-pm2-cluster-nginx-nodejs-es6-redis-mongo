@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   proxy:
+    restart: always
     container_name: diego-dev-nginx
     build:
       dockerfile: Dockerfile
@@ -12,10 +13,23 @@ services:
       - diego-dev
   
   diego-dev-redis:
+    restart: always
     image: redis
     container_name: diego-dev-redis
     expose:
       - 6379
+
+  diego-dev-mongo:
+    image: mongo
+    restart: always
+    environment:
+     MONGODB_USERNAME: diego
+     MONGODB_PASSWORD: diegocao
+     MONGODB_DATABASE: diego-dev
+    volumes:
+    - ./data/db:/var/micro-data/mongodb/data/db
+    ports:
+    - "27017:27017"
 
   diego-dev:
     build:
@@ -28,6 +42,7 @@ services:
       - "8080:8080"
     links:
       - diego-dev-redis
+      - diego-dev-mongo
     volumes:
       - .:/diego
     tty: true

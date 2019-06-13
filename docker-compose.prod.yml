@@ -1,6 +1,7 @@
 version: '3.4'
 services:
   proxy:
+    restart: always
     container_name: diego-prod-nginx
     build:
       dockerfile: Dockerfile
@@ -12,10 +13,17 @@ services:
       - diego
 
   diego-redis:
+    restart: always
     image: redis
     container_name: diego-redis
     expose:
       - 6380
+  
+  diego-mongo:
+    restart: always
+    image: mongo
+    ports:
+    - "27018:27018"
     
   diego:
     build:
@@ -28,6 +36,7 @@ services:
       - "8081:8081"
     links:
       - diego-redis
+      - diego-mongo
     volumes:
       - .:/diego
     tty: true
