@@ -70,6 +70,24 @@ module.exports = {
   }]
 }
 ```
+Nginx configuration 
+```
+upstream diego-dev {
+  server diego-dev:8080;
+}
+
+server {
+    listen              80;    
+    # error_page 404 /404.html;
+    #     location = /40x.html {}
+
+    # error_page 500 502 503 504 /50x.html;
+    #     location = /50x.html {}
+    location / {
+      proxy_pass http://diego-dev;
+    }
+}
+```
 	
 If you see any issue, please do not hesitate to create an issue here or can contact me via email cao.trung.thu@gmail.com or [Linkedin](https://www.linkedin.com/in/diegothucao/)
 
