@@ -7,7 +7,7 @@ Step to run
 2. Run development mode `docker-compose -f docker-compose.dev.yml up --build` or Production mode `docker-compose -f docker-compose.prod.yml up --build`
 3. Open [localhost](http://localhost)
 4. Test Redis
-	- Run [set data redis](http://localhost/store/my-key\?some\=value\&some-other\=other-value)
+	- Run [set data redis](http://localhost/store/my-key?thucao)
 	- Run [get data redis](http://localhost/my-key)
 
 create basic `Nodejs` code  
@@ -35,8 +35,8 @@ Multi target
 
 ```python
 FROM node:10 as base
-RUN mkdir -p /usr/src/appny
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/diego
+WORKDIR /usr/diego
 COPY package*.json ./
 RUN npm install -g pm2 yarn
 RUN yarn install
@@ -44,14 +44,12 @@ COPY . .
 RUN yarn run build
 
 FROM base as diego-dev
-EXPOSE 8080
-CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "development" ]
-RUN pm2 startup
+EXPOSE 8080 80
+CMD [ "pm2", "start", "ecosystem.config.js", "--env", "development", "--no-daemon" ]
 
 FROM base as diego
-EXPOSE 8081
-CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]
-RUN pm2 startup
+EXPOSE 8081 80
+CMD [ "pm2", "start", "ecosystem.config.js", "--env", "production", "--no-daemon" ]
 ```
 PM2 configuration 
 ```javascript
