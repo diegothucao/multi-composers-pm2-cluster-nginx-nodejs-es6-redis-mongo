@@ -17,17 +17,17 @@ app.get('/', (_, res) => {
 
 // set data to Redis
 app.get('/store/:key', async (req, res) => {
-  const { key } = req.params;
-  const value = req.query;
+  const { key } = req.params
+  const value = req.query
   await redisClient.setAsync(key, value)
   return res.send('Success')
 })
 
 // get data from Redis 
 app.get('/:key', async (req, res) => {
-  const { key } = req.params;
-  const rawData = await redisClient.getAsync(key);
-  return res.json(rawData);
+  const { key } = req.params
+  const rawData = await redisClient.getAsync(key)
+  return res.send(rawData)
 })
 
 let server = app.listen(process.env.PORT || 8080)

@@ -1,7 +1,7 @@
 import { createClient } from 'redis'
 import { promisify } from 'util'
 
-const client = createClient(process.env.REDIS_URL);
+const client = createClient(process.env.REDIS_URL)
 
 export default {
   ...client,
