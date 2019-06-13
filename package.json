@@ -14,7 +14,7 @@
   "keywords": [
     "Diego"
   ],
-  "license": "Diego",
+  "license": "ISC",
   "dependencies": {
     "@types/dotenv": "^6.1.0",
     "cors": "2.8.5",
