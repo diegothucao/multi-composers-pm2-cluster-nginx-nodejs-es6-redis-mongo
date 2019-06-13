@@ -18,9 +18,8 @@ app.get('/', (_, res) => {
 // set data to Redis
 app.get('/store/:key', async (req, res) => {
   const { key } = req.params
-  const value = req.query
-  await redisClient.setAsync(key, value)
-  return res.send('Success')
+  await redisClient.setAsync(key, "Ok")
+  return res.send('Ok')
 })
 
 // get data from Redis 
