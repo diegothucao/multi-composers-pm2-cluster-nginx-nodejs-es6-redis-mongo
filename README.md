@@ -49,6 +49,7 @@ let server = app.listen(process.env.PORT || 8080)
 server.setTimeout(500000)
 ```
 Multi target 
+
 ```python
 FROM node:10 as base
 RUN mkdir -p /usr/diego
@@ -67,7 +68,9 @@ FROM base as diego
 EXPOSE 8081 80
 CMD [ "pm2", "start", "ecosystem.config.js", "--env", "production", "--no-daemon" ]
 ```
+
 Docker composer 
+
 ```
 version: '3.4'
 services:
@@ -125,6 +128,7 @@ module.exports = {
   }]
 }
 ```
+
 Nginx configuration 
 ```
 upstream diego-dev {
