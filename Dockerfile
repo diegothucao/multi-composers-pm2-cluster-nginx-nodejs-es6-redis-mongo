@@ -9,10 +9,8 @@ RUN yarn run build
 
 FROM base as diego-dev
 EXPOSE 8080 80
-CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "development" ]
-RUN pm2 startup
+CMD [ "pm2", "start", "ecosystem.config.js", "--env", "development", "--no-daemon" ]
 
 FROM base as diego
 EXPOSE 8081 80
-CMD [ "pm2-runtime", "start", "ecosystem.config.js", "--env", "production" ]
-RUN pm2 startup
+CMD [ "pm2", "start", "ecosystem.config.js", "--env", "production", "--no-daemon" ]
