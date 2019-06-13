@@ -1,4 +1,3 @@
-
 import express from 'express'
 import cors from 'cors'
 import { urlencoded, json } from 'body-parser'
@@ -28,7 +27,7 @@ app.get('/store/:key', async (req, res) => {
 app.get('/:key', async (req, res) => {
   const { key } = req.params;
   const rawData = await redisClient.getAsync(key);
-  return res.json(awData);
+  return res.json(rawData);
 })
 
 let server = app.listen(process.env.PORT || 8080)
