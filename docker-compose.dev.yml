@@ -4,12 +4,18 @@ services:
     container_name: diego-dev-nginx
     build:
       dockerfile: Dockerfile
-      target: diego-dev
+      target: diego-dev-nginx
       context: ./nginx
     ports:
       - "80:80"
     links:
       - diego-dev
+  
+  diego-dev-redis:
+    image: redis
+    container_name: diego-dev-redis
+    expose:
+      - 6379
 
   diego-dev:
     build:
@@ -20,9 +26,12 @@ services:
     restart: always
     ports:
       - "8080:8080"
+    links:
+      - diego-dev-redis
     volumes:
       - .:/diego
     tty: true
     environment:
       PORT: 8080
+      REDIS_URL: redis://diego-dev-redis
      
