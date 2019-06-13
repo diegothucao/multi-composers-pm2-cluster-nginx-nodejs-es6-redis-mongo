@@ -26,7 +26,11 @@ app.get('/store/:key', async (req, res) => {
 app.get('/:key', async (req, res) => {
   const { key } = req.params
   const rawData = await redisClient.getAsync(key)
-  return res.send('The data is: '  + rawData)
+  if ( rawData !== null && rawData !== undefined ) {
+    return res.send('The data is: '  + rawData)
+  }else {
+    return res.send('There is no data for key: '  + key)
+  }
 })
 
 let server = app.listen(process.env.PORT || 8080)
