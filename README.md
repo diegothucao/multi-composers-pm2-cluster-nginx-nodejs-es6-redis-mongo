@@ -7,7 +7,7 @@ Step to run
 2. Run development mode `docker-compose -f docker-compose.dev.yml up --build` or Production mode `docker-compose -f docker-compose.prod.yml up --build`
 3. Open [localhost](http://localhost)
 4. Test Redis
-	- Run [set data redis](http://localhost/store/my-key?thucao)
+	- Run [set data redis](http://localhost/store/my-key)
 	- Run [get data redis](http://localhost/my-key)
 
 create basic `Nodejs` code  
