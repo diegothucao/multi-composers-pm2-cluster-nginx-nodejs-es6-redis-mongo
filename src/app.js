@@ -3,7 +3,7 @@ import cors from 'cors'
 import { urlencoded, json } from 'body-parser'
 import dotenv from 'dotenv'
 import redisClient from './redis-client'
-import MongoClient from 'mongodb'
+import { MongoClient } from 'mongodb'
 
 dotenv.load()
 const app = express()
@@ -16,8 +16,12 @@ app.get('/', (_, res) => {
 })
 
 // Use connect method to connect to the server
-MongoClient.connect(process.env.MONGO_URL, function(_err, _client) {
-  console.log("Connected to database")
+MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, (error, _client) => {
+  if (error === null) {
+    console.log("Connected to database")
+  }else {
+    console.log("Cannot connect to database")
+  }
 })
 
 
