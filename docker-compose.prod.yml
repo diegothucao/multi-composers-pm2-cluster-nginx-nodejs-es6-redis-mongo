@@ -22,8 +22,13 @@ services:
   diego-mongo:
     restart: always
     image: mongo
+    ontainer_name: diego-mongo
+    volumes:
+    - ./data/db:/var/micro-data/mongodb/data/db
     ports:
     - "27018:27018"
+    expose:
+      - 27018
     
   diego:
     build:
@@ -43,3 +48,4 @@ services:
     environment:
       PORT: 8081
       REDIS_URL: redis://diego-redis
+      MONGO_URL: mongodb://diego-mongo

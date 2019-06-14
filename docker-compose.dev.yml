@@ -22,14 +22,13 @@ services:
   diego-dev-mongo:
     image: mongo
     restart: always
-    environment:
-     MONGODB_USERNAME: diego
-     MONGODB_PASSWORD: diegocao
-     MONGODB_DATABASE: diego-dev
+    container_name: diego-dev-mongo
     volumes:
     - ./data/db:/var/micro-data/mongodb/data/db
     ports:
     - "27017:27017"
+    expose:
+      - 27017
 
   diego-dev:
     build:
@@ -49,4 +48,5 @@ services:
     environment:
       PORT: 8080
       REDIS_URL: redis://diego-dev-redis
+      MONGO_URL: mongodb://diego-dev-mongo
      
