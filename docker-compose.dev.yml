@@ -19,23 +19,37 @@ services:
     expose:
       - 6379
 
-  mongo:
+  mongo-dev-db:
     image: mongo
+    container_name: mongo-dev-db
     restart: always
+    volumes:
+    - ./data/db:/var/mongo-dev-data/mongodb/data/db
+    ports:
+    - "27017:27017"
+    expose:
+      - 27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: diego
 
   diego-dev-mongo:
     image: mongo-express
     restart: always
     container_name: diego-dev-mongo
     ports:
-      - 8081:8081
+      - "8082:8082"
+    expose:
+      - 8082
     environment:
+      ME_CONFIG_MONGODB_SERVER: mongo-dev-db
+      ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      MONGO_INITDB_DATABASE: diego
+    links:
+      - mongo-dev-db
 
   diego-dev:
     build:

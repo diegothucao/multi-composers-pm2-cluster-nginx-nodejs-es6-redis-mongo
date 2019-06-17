@@ -24,7 +24,6 @@ MongoClient.connect(process.env.MONGO_URL, { useNewUrlParser: true }, (error, _c
   }
 })
 
-
 // set data to Redis
 app.get('/store/:key', async (req, res) => {
   const { key } = req.params
