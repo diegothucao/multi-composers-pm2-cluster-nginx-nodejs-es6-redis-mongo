@@ -76,6 +76,7 @@ Docker composer
 version: '3.4'
 services:
   proxy:
+    restart: always
     container_name: diego-dev-nginx
     build:
       dockerfile: Dockerfile
@@ -87,10 +88,30 @@ services:
       - diego-dev
   
   diego-dev-redis:
+    restart: always
     image: redis
     container_name: diego-dev-redis
     expose:
       - 6379
+
+  diego-dev-db:
+    image: aashreys/mongo-auth:latest
+    container_name: diego-dev-db
+    restart: always
+    volumes:
+    - ./data/db:/var/mongo-dev-data/mongodb/data/db
+    ports:
+    - "27017:27017"
+    command: mongod --port 27017
+    expose:
+      - 27017
+    environment:
+      AUTH: "yes"
+      MONGODB_ADMIN_USER: root
+      MONGODB_ADMIN_PASS: root
+      MONGODB_APPLICATION_DATABASE: diego
+      MONGODB_APPLICATION_USER: admin
+      MONGODB_APPLICATION_PASS: admin
 
   diego-dev:
     build:
@@ -103,12 +124,14 @@ services:
       - "8080:8080"
     links:
       - diego-dev-redis
+      - diego-dev-db
     volumes:
       - .:/diego
     tty: true
     environment:
       PORT: 8080
-      REDIS_URL: redis://diego-dev-redis     
+      REDIS_URL: redis://diego-dev-redis
+      MONGO_URL: mongodb://diego-dev-db/diego  
 ```
 PM2 configuration 
 ```javascript
