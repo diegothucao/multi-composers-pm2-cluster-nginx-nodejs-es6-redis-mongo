@@ -69,5 +69,5 @@ services:
     environment:
       PORT: 8080
       REDIS_URL: redis://diego-dev-redis
-      MONGO_URL: mongodb://diego-dev-mongo
+      MONGO_URL: mongodb://mongo-dev-db/admin
      
