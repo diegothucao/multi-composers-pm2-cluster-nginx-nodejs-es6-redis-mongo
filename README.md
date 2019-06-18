@@ -3,7 +3,7 @@
 This is an essential example to build docker with multi composers, pm2, nodejs/es6, nginx, redis, mongo and cluster.
 
 Step to run
-1. Clone the [repo](https://github.com/diegothucao/multi-composers-pm2-cluster-nginx-nodejs-es6-redis)
+1. Clone the [repo](https://github.com/diegothucao/multi-composers-pm2-cluster-nginx-nodejs-es6-redis-mongo)
 2. Run development mode `docker-compose -f docker-compose.dev.yml up --build --remove-orphans` or Production mode `docker-compose -f docker-compose.prod.yml up --build --remove-orphans`. You you want to delete all old containers and images, try `docker rm $(docker ps -a -q)` and `docker rmi $(docker images -q)`
 3. Open [localhost](http://localhost) to see server response data
 4. Test Redis
