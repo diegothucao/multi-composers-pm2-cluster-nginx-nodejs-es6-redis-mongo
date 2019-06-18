@@ -19,16 +19,23 @@ services:
     expose:
       - 6380
   
-  diego-mongo:
+  diego-db:
+    image: aashreys/mongo-auth:latest
+    container_name: diego-db
     restart: always
-    image: mongo
-    ontainer_name: diego-mongo
     volumes:
-    - ./data/db:/var/micro-data/mongodb/data/db
+    - ./data/db:/var/mongo-dev-data/mongodb/data/db
     ports:
     - "27018:27018"
     expose:
       - 27018
+    environment:
+      AUTH: "yes"
+      MONGODB_ADMIN_USER: root
+      MONGODB_ADMIN_PASS: root
+      MONGODB_APPLICATION_DATABASE: diego
+      MONGODB_APPLICATION_USER: admin
+      MONGODB_APPLICATION_PASS: admin
     
   diego:
     build:
@@ -41,11 +48,11 @@ services:
       - "8081:8081"
     links:
       - diego-redis
-      - diego-mongo
+      - diego-db
     volumes:
       - .:/diego
     tty: true
     environment:
       PORT: 8081
       REDIS_URL: redis://diego-redis
-      MONGO_URL: mongodb://diego-mongo
+      MONGO_URL: mongodb://diego-db/diego
