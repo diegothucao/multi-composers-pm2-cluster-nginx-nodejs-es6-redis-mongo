@@ -27,6 +27,7 @@ services:
     - ./data/db:/var/mongo-dev-data/mongodb/data/db
     ports:
     - "27017:27017"
+    command: mongod --port 27017
     expose:
       - 27017
     environment:

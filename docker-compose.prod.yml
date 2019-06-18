@@ -24,9 +24,10 @@ services:
     container_name: diego-db
     restart: always
     volumes:
-    - ./data/db:/var/mongo-dev-data/mongodb/data/db
+    - ./data/db:/var/mongo-prod-data/mongodb/data/db
     ports:
     - "27018:27018"
+    command: mongod --port 27018
     expose:
       - 27018
     environment:
@@ -55,4 +56,4 @@ services:
     environment:
       PORT: 8081
       REDIS_URL: redis://diego-redis
-      MONGO_URL: mongodb://diego-db/diego
+      MONGO_URL: mongodb://diego-db:27018/diego
