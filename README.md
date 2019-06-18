@@ -180,3 +180,4 @@ references
  1. https://docs.docker.com/install/	
  2. http://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/
  3. https://codefresh.io/docker-tutorial/node_docker_multistage/
+ 4. https://github.com/aashreys/docker-mongo-auth
