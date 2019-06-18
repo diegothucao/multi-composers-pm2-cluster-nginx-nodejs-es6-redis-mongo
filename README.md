@@ -9,7 +9,7 @@ Step to run
 4. Test Redis
 	- Run [set data redis](http://localhost/store/diego)
 	- Run [get data redis](http://localhost/diego)
-5. Connect to database: Try username/ password/ database: 'admin/ admin/ diego'. The port of development mode is 27017 and production mode is 27018
+5. Connect to database: Try username/ password/ database: `admin/ admin/ diego`. The port of development mode is `27017` and production mode is `27018`
 
 create basic `Nodejs` code  
 ```javascript 
