@@ -23,8 +23,6 @@ services:
     image: aashreys/mongo-auth:latest
     container_name: diego-dev-db
     restart: always
-    volumes:
-    - ./data/db:/var/mongo-dev-data/mongodb/data/db
     ports:
     - "27017:27017"
     command: mongod --port 27017
